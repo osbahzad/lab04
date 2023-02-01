@@ -2,14 +2,28 @@
 # making the covert method
 def convert(temp, measure = "F")
     return "Temperature must be an integer" if temp.class != Integer
+    return "Temperature below Absolute Zero" if below_absolute_zero?(temp, measure)
 
     if measure == "F"
-        return "Temperature below Absolute Zero" if temp < -474 
         return ((temp-32)*5)/9
     else 
         return (temp*1.8)+32
     end
 
+end
+
+# Helper 
+def below_absolute_zero?(temp, measure)
+    if measure == "F"
+        if temp <= -474 
+            return true
+        end
+    else
+         if temp <= -280 
+            return true
+         end
+    end
+    return false
 end
 
 
