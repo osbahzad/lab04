@@ -1,7 +1,8 @@
 
 # making the covert method
 def convert(temp)
-    return "Temperature must be an integer" unless temp.class == Integer
+    return "Temperature must be an integer" if temp.class != Integer
+    return "Temperature below Absolute Zero" if temp < -474 
     return ((temp-32)*5)/9
 end
 
@@ -13,3 +14,4 @@ puts convert(212)
 
 # edge case test
 puts convert("zero")
+puts convert(-500)
